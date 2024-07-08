@@ -1,8 +1,8 @@
 using CASAChess, Suppressor, Test
 
 function tests()
-  @suppress begin
-    @testset "FEN string validation" begin
+  @testset "is_valid_FEN" begin
+    @suppress begin
       good = "8/5k2/3p4/1p1Pp2p/pP2Pp1P/P4P1K/8/8 b - - 99 50"
       @test CASAChess.is_valid_FEN(good)
 
@@ -14,6 +14,9 @@ function tests()
 
       missing_row = "8/3p4/1p1Pp2p/pP2Pp1P/P4P1K/8/8 b - - 99 50"
       @test !CASAChess.is_valid_FEN(missing_row)
+
+      invalid_char = "8/5w2/3p4/1p1Pp2p/pP2Pp1P/P4P1K/8/8 b - - 99 50"
+      @test !CASAChess.is_valid_FEN(invalid_char)
 
       missing_square = "8/4k2/3p4/1p1Pp2p/pP2Pp1P/P4P1K/8/8 b - - 99 50"
       @test !CASAChess.is_valid_FEN(missing_square)
