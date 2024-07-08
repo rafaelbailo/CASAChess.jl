@@ -1,6 +1,13 @@
 using CASAChess
-using Test
+
+using SafeTestsets, Test
 
 @testset "CASAChess.jl" begin
-    # Write your tests here.
+  for test ∈ ["aqua", "FEN", "format"]
+    @eval begin
+      @safetestset $test begin
+        include($test * ".jl")
+      end
+    end
+  end
 end

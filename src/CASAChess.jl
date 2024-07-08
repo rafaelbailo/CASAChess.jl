@@ -1,5 +1,10 @@
 module CASAChess
 
-# Write your package code here.
+using Crayons
+
+include("./settings.jl")
+
+include("./FEN.jl")
+include("./symbols.jl")
 
 end
